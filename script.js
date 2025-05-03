@@ -74,4 +74,9 @@ document
 message.style.backgroundColor = '#37383d';
 message.style.width = '120%';
 
-console.log(message.style.height);
+console.log(message.style.color);
+console.log(message.style.backgroundColor);
+console.log(getComputedStyle(message).height);
+
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).heigh, 10) + 40 + 'px';
