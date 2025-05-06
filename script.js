@@ -88,6 +88,21 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
+////////////////////////////Tapped component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+tabsContainer.addEventListener('click', function (e) {
+  // e.preventDefault();
+  const clicked = e.target.closest('.operations__tab');
+  console.log(clicked);
+
+  //Guard clause
+  if (!clicked) return;
+  tabs.forEach(t => t.classList.remove('operations__tab--ative'));
+  clicked.classList.add('operations__tab--active');
+});
 /////////////////////////////////////////////
 /*
 //////////////Selecting Elements
@@ -256,3 +271,33 @@ document.querySelector('.nav').addEventListener('click', function (e) {
   console.log('NAV ', e.target, e.currentTarget);
 });
 */
+const h1 = document.querySelector('h1');
+
+//Going downwards: child : first way of doing it.
+console.log(h1.querySelectorAll('.highlight'));
+console.log(h1.childNodes);
+console.log(h1.children);
+h1.firstElementChild.style.color = 'white';
+h1.lastElementChild.style.color = 'orangered';
+
+//Going upwards: parents
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+h1.closest('.header').style.background = 'var(--gradient-secondary)';
+h1.closest('h1').style.background = 'var(--gradient-primary)';
+
+// Going sideways: Siblings
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+
+console.log(h1.previousSibling);
+console.log(h1.nextSibling);
+
+console.log(h1.parentElement.children);
+
+[...h1.parentElement.children].forEach(function (el) {
+  if (el !== h1) {
+    el.style.transform = 'scale(o.5)';
+  }
+});
